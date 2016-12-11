@@ -36,6 +36,7 @@
             this.addNoteGroup = new System.Windows.Forms.GroupBox();
             this.set_combobox_names = new System.Windows.Forms.ComboBox();
             this.grabNoteGroup = new System.Windows.Forms.GroupBox();
+            this.textbox_number_input = new System.Windows.Forms.TextBox();
             this.getNoteButton = new System.Windows.Forms.Button();
             this.get_combobox_names = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addOwnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeOwnersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textbox_number_input = new System.Windows.Forms.TextBox();
             this.addNoteGroup.SuspendLayout();
             this.grabNoteGroup.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -112,6 +112,7 @@
             this.set_combobox_names.Name = "set_combobox_names";
             this.set_combobox_names.Size = new System.Drawing.Size(121, 21);
             this.set_combobox_names.TabIndex = 12;
+            this.set_combobox_names.SelectedIndexChanged += new System.EventHandler(this.onSelectedIndexChanged);
             // 
             // grabNoteGroup
             // 
@@ -126,6 +127,13 @@
             this.grabNoteGroup.TabIndex = 13;
             this.grabNoteGroup.TabStop = false;
             this.grabNoteGroup.Text = "Grab a note";
+            // 
+            // textbox_number_input
+            // 
+            this.textbox_number_input.Location = new System.Drawing.Point(267, 16);
+            this.textbox_number_input.Name = "textbox_number_input";
+            this.textbox_number_input.Size = new System.Drawing.Size(121, 20);
+            this.textbox_number_input.TabIndex = 12;
             // 
             // getNoteButton
             // 
@@ -207,13 +215,6 @@
             this.removeOwnersToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.removeOwnersToolStripMenuItem.Text = "Remove owners";
             this.removeOwnersToolStripMenuItem.Click += new System.EventHandler(this.removeOwners);
-            // 
-            // textbox_number_input
-            // 
-            this.textbox_number_input.Location = new System.Drawing.Point(267, 16);
-            this.textbox_number_input.Name = "textbox_number_input";
-            this.textbox_number_input.Size = new System.Drawing.Size(121, 20);
-            this.textbox_number_input.TabIndex = 12;
             // 
             // BaseProgram
             // 

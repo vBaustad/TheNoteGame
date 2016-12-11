@@ -97,6 +97,7 @@ namespace TheNoteGame
             var query = "SELECT Number FROM activity WHERE Name =" + set_combobox_names.Text + " ORDER BY Number ASC";
             string names = set_combobox_names.Text;
             string note = textboxNote_desc.Text;
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
             int number = 1;
 
             MySqlConnection conn = new MySqlConnection(sqlConnection);
@@ -142,12 +143,19 @@ namespace TheNoteGame
                     }
 
                 }
+            string sql = "insert into Activity(Number, Name, Activity, Date)Values(@number, @names, @note, @date)";
 
-            MySqlCommand addActivity = new MySqlCommand("insert into Activity(Number, Name, Activity, Date)Values('" + number + "','" + 
-                                                        names + "','" + note + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "')", conn);
+            using (var addActivity = new MySqlCommand(sql, conn))
+            {
+                addActivity.Parameters.Add("@number", MySqlDbType.Int64).Value = number;
+                addActivity.Parameters.Add("@names", MySqlDbType.String).Value = names;
+                addActivity.Parameters.Add("@note", MySqlDbType.String).Value = note;
+                addActivity.Parameters.Add("@date", MySqlDbType.Date).Value = date;
 
-            addActivity.ExecuteNonQuery();
-            MessageBox.Show("Save success");
+                addActivity.ExecuteNonQuery();
+                textboxNote_desc.Clear();
+                MessageBox.Show("Save success");
+            }
             
             conn.Close();
         
@@ -177,6 +185,11 @@ namespace TheNoteGame
                             
                 
             }
+        }
+
+        private void onSelectedIndexChanged(object sender, EventArgs e)
+        {
+            textboxNote_desc.Clear();
         }
 
         private void textboxNote_desc_TextChanged(object sender, EventArgs e)
